@@ -5,18 +5,16 @@
 
 extern wchar_t** CMD_HANDLER;
 extern void (*CMD[6])(void);
+extern wchar_t** READ_HANDER;
 extern FILE* contactsFile;
-extern FILE* phoneBookFile;
-extern size_t MAX_ID;
 # define CONTACTS_PATH "contacts.csv"
-# define PHONEBOOK_PATH "phone_book.csv"
 
 typedef enum {
-	EXIT,
 	CREATE,
 	READ,
 	UPDATE,
 	DELETE,
+	EXIT,
 	NONE,
 } CmdType;
 
@@ -27,16 +25,7 @@ typedef struct {
 } ContactData;
 
 typedef struct {
-	wchar_t* number;
-} PhoneBookData;
-
-typedef struct {
-	size_t size;
-	PhoneBookData* pb;
-} TuplePhoneBookTable;
-
-typedef struct {
-	size_t size;
+	long size;
 	ContactData* contacts;
 } TupleContactTable;
 

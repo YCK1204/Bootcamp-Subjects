@@ -27,6 +27,9 @@
     <ClCompile Include="Execute.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ContactData.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileSystem.h">
@@ -39,6 +42,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Define.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactData.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

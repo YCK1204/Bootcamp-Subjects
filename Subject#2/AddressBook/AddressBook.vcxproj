@@ -135,12 +135,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ContactData.c" />
     <ClCompile Include="Execute.c" />
     <ClCompile Include="FileSystem.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Utils.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ContactData.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Execute.h" />
     <ClInclude Include="FileSystem.h" />

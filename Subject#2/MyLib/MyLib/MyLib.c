@@ -67,13 +67,13 @@ DLLEXPORT wchar_t* Getline(FILE* fp) {
 		fgetws(buf, sizeof(buf) / sizeof(wchar_t), fp);
 		size_t size = 0;
 		size_t n = wcslen(buf);
-
+		
 		if (remainWords[fd] == NULL) {
 			remainWords[fd] = _wcsdup(buf);
 		}
 		else {
 			size = wcslen(remainWords[fd]);
-			remainWords[fd] = (wchar_t*)realloc(remainWords, sizeof(wchar_t) * (size + n));
+			remainWords[fd] = (wchar_t*)realloc(remainWords[fd], sizeof(wchar_t) * (size + n));
 			ReplaceString(&remainWords[fd], StrJoin(remainWords[fd], buf));
 			size--;
 		}
@@ -99,10 +99,15 @@ DLLEXPORT wchar_t* Getline(FILE* fp) {
 }
 
 DLLEXPORT wchar_t* _Getline(int fd) {
-	FILE* fp = fdopen(fd, "r+, ccs=UTF-8");
+	if (fd >= 3)
+	{
+		FILE* fp = fdopen(fd, "r+, ccs=UTF-8");
 
-	wchar_t* ret = Getline(fp);
-	return ret;
+		wchar_t* ret = Getline(fp);
+		fclose(fp);
+		return ret;
+	}
+	return Getline(stdin);
 }
 
 DLLEXPORT wchar_t** Split(wchar_t* str, int delim, bool trim) {
@@ -343,8 +348,18 @@ DLLEXPORT void String_ToLower(wchar_t* str) {
 
 DLLEXPORT wchar_t* Readline(wchar_t* msg) {
 	setlocale(LC_ALL, "");
-	wprintf(L"%ls", msg);
-	return _Getline(0);
+
+	wchar_t* ret = NULL;
+	while (true)
+	{
+		wprintf(L"%ls", msg);
+		ret = _Getline(0);
+		if (wcslen(ret) != 0)
+			break;
+		free(ret);
+	}
+	ReplaceString(&ret, Trim(ret));
+	return ret;
 }
 
 DLLEXPORT int MyStrcmp(wchar_t* s1, wchar_t* s2) {
@@ -366,7 +381,7 @@ DLLEXPORT int MyStrcmp(wchar_t* s1, wchar_t* s2) {
 
 DLLEXPORT int Get2PCharSize(wchar_t** strs) {
 	if (strs == NULL)
-		return -1;
+		return 0;
 	size_t i = 0;
 	for (; strs[i]; i++);
 	return i;
