@@ -127,22 +127,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AddressBookManager.cpp" />
+    <ClCompile Include="ContactData.cpp" />
     <ClCompile Include="ControlManager.cpp" />
+    <ClCompile Include="Create.cpp" />
     <ClCompile Include="DataManager.cpp" />
+    <ClCompile Include="Delete.cpp" />
+    <ClCompile Include="Exit.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="DynamicUI.cpp" />
+    <ClCompile Include="None.cpp" />
+    <ClCompile Include="Read.cpp" />
     <ClCompile Include="StaticUI.cpp" />
+    <ClCompile Include="Update.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AddressBookManager.hpp" />
+    <ClInclude Include="ContactData.hpp" />
     <ClInclude Include="ControlManager.hpp" />
+    <ClInclude Include="Create.hpp" />
     <ClInclude Include="DataManager.hpp" />
+    <ClInclude Include="Delete.hpp" />
+    <ClInclude Include="Exit.hpp" />
     <ClInclude Include="Manager.hpp" />
     <ClInclude Include="DynamicUI.hpp" />
+    <ClInclude Include="None.hpp" />
+    <ClInclude Include="Read.hpp" />
+    <ClInclude Include="State.hpp" />
     <ClInclude Include="StaticUI.hpp" />
+    <ClInclude Include="Update.hpp" />
     <ClInclude Include="Utils.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

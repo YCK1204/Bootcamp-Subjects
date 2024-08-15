@@ -3,27 +3,21 @@
 
 #include <string>
 #include <fstream>
-#include <map>
-#include <functional>
-#include <iostream>
+#include "State.hpp"
 
 class ControlManager
 {
 private:
     static ControlManager* _instance;
+    State* state;
     ControlManager();
-    std::map<std::string, std::function<void()>> cmd;
-    void Init();
-    void Create();
-    void Read();
-    void Update();
-    void Delete();
-    void Exit();
+    void SetState(State* state);
 
 public:
     static ControlManager& Instance();
     ~ControlManager();
-    void Navigate(const std::string& cmd);
+    void TransitionState(std::string cmd);
+    void Request();
 };
 
 #endif

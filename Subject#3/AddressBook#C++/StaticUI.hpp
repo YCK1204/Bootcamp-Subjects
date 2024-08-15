@@ -31,7 +31,6 @@ private:
 	static std::string _dbEmpty;
 public:
 	static void Print(UIType type);
-	std::string Readline(std::string msg);
 };
 
 #endif

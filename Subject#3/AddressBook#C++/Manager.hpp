@@ -3,7 +3,6 @@
 
 #include "ControlManager.hpp"
 #include "DataManager.hpp"
-#include "AddressBookManager.hpp"
 
 class Manager
 {
@@ -13,7 +12,6 @@ private:
 public:
 	static ControlManager& Control;
 	static DataManager& Data;
-	static AddressBookManager& AddressBook;
 };
 
 #endif

@@ -25,6 +25,12 @@
     <Filter Include="소스 파일\UI">
       <UniqueIdentifier>{bb366842-9d23-48c3-8e20-9fda9454d2bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Managers\Control">
+      <UniqueIdentifier>{d2a04e00-fb1c-42fe-b142-d39db858d999}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Managers\Control">
+      <UniqueIdentifier>{b1bf0771-92ab-4b48-a559-e6d84bf5fd17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,20 +42,38 @@
     <ClCompile Include="DataManager.cpp">
       <Filter>소스 파일\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="StaticUI.cpp">
       <Filter>소스 파일\UI</Filter>
     </ClCompile>
     <ClCompile Include="DynamicUI.cpp">
       <Filter>소스 파일\UI</Filter>
     </ClCompile>
-    <ClCompile Include="AddressBookManager.cpp">
-      <Filter>소스 파일\Managers</Filter>
-    </ClCompile>
     <ClCompile Include="ControlManager.cpp">
       <Filter>소스 파일\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Create.cpp">
+      <Filter>소스 파일\Managers\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Delete.cpp">
+      <Filter>소스 파일\Managers\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Update.cpp">
+      <Filter>소스 파일\Managers\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Exit.cpp">
+      <Filter>소스 파일\Managers\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="None.cpp">
+      <Filter>소스 파일\Managers\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="ContactData.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Read.cpp">
+      <Filter>소스 파일\Managers\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -59,19 +83,40 @@
     <ClInclude Include="DataManager.hpp">
       <Filter>헤더 파일\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.hpp">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="DynamicUI.hpp">
       <Filter>헤더 파일\UI</Filter>
     </ClInclude>
     <ClInclude Include="StaticUI.hpp">
       <Filter>헤더 파일\UI</Filter>
     </ClInclude>
-    <ClInclude Include="AddressBookManager.hpp">
-      <Filter>헤더 파일\Managers</Filter>
+    <ClInclude Include="Create.hpp">
+      <Filter>헤더 파일\Managers\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="None.hpp">
+      <Filter>헤더 파일\Managers\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="State.hpp">
+      <Filter>헤더 파일\Managers\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Update.hpp">
+      <Filter>헤더 파일\Managers\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Delete.hpp">
+      <Filter>헤더 파일\Managers\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Exit.hpp">
+      <Filter>헤더 파일\Managers\Control</Filter>
     </ClInclude>
     <ClInclude Include="ControlManager.hpp">
+      <Filter>헤더 파일\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactData.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Read.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

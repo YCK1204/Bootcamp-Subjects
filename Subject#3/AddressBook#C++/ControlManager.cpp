@@ -1,55 +1,56 @@
 #include "ControlManager.hpp"
 #include "StaticUI.hpp"
+#include "None.hpp"
+#include "Create.hpp"
+#include "Read.hpp"
+#include "Update.hpp"
+#include "Delete.hpp"
+#include "Exit.hpp"
 
 ControlManager* ControlManager::_instance = nullptr;
-
-void ControlManager::Navigate(const std::string& cmd) {
-    auto it = this->cmd.find(cmd);
-    if (it == this->cmd.end()) {
-        StaticUI::Print(UIType::COMMAND_SYNTAX);
-        return;
-    }
-    it->second();
-}
 
 ControlManager& ControlManager::Instance() {
     if (_instance == nullptr) {
         _instance = new ControlManager();
+        _instance->SetState(&NoneControl::Instance());
     }
     return *_instance;
 }
 
 ControlManager::ControlManager() {
-    Init();
 }
 
 ControlManager::~ControlManager() {
+    if (_instance != nullptr)
+        delete _instance;
 }
 
-void ControlManager::Init() {
-    cmd["create"] = std::bind(&ControlManager::Create, this);
-    cmd["read"] = std::bind(&ControlManager::Read, this);
-    cmd["update"] = std::bind(&ControlManager::Update, this);
-    cmd["delete"] = std::bind(&ControlManager::Delete, this);
-    cmd["exit"] = std::bind(&ControlManager::Exit, this);
+void ControlManager::SetState(State* state) {
+    Instance().state = state;
 }
 
-void ControlManager::Create() {
-    StaticUI::Print(UIType::CREATE);
+void ControlManager::TransitionState(std::string cmd) {
+    if (!cmd.compare("create")) {
+        SetState(&CreateControl::Instance());
+    }
+    else if (!cmd.compare("read")) {
+        SetState(&ReadControl::Instance());
+    }
+    else if (!cmd.compare("update")) {
+        SetState(&UpdateControl::Instance());
+    }
+    else if (!cmd.compare("delete")) {
+        SetState(&DeleteControl::Instance());
+    }
+    else if (!cmd.compare("exit")) {
+        SetState(&ExitControl::Instance());
+    }
+    else {
+        SetState(&NoneControl::Instance());
+        StaticUI::Print(UIType::COMMAND_SYNTAX);
+    }
 }
 
-void ControlManager::Read() {
-    StaticUI::Print(UIType::READ);
-}
-
-void ControlManager::Update() {
-    StaticUI::Print(UIType::UPDATE);
-}
-
-void ControlManager::Delete() {
-    StaticUI::Print(UIType::DELETE);
-}
-
-void ControlManager::Exit() {
-    ::exit(0);
+void ControlManager::Request() {
+    state->Handle();
 }
