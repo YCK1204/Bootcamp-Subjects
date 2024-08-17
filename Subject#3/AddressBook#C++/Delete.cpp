@@ -39,8 +39,8 @@ void DeleteControl::Handle() {
 	{
 		fileData.erase(fileData.begin() + pos);
 		std::string newData = Utils::ContactDataToString(fileData);
-		Manager::Data.Clear();
-		Manager::Data.UpdateData(newData);
+		Manager::Data.SetData(fileData);
+		Manager::Data.Update();
 	}
 }
 

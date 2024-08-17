@@ -39,26 +39,21 @@ std::string DataManager::ToString() {
 		if (!file.eof())
 			total += "\n";
 	}
-
-	if (total.empty() == false)
-		total.erase(total.length() - 1);
+	
 	file.seekg(pos);
 	return total;
 }
 
-void DataManager::UpdateData(std::string data) {
-	auto pos = file.tellp();
-	file.seekp(0, std::ios::end);
-	if (file.tellp() > 0)
-		file << '\n';
-	file << data;
-	file.seekp(pos);
+void DataManager::Update() {
+	Clear();
+	std::string txt = Utils::ContactDataToString(data);
+	file << txt;
 }
 
 void DataManager::Clear() {
 	file.close();
 	file.open(FILE_PATH, std::ios::in | std::ios::trunc | std::ios::out);
-	if (!Instance().file.is_open() || !Instance().file.good())
+	if (!file.is_open() || !file.good())
 	{
 		std::cerr << __FILE__ << ":" << __LINE__ << " Error: can not open file";
 		::exit(1);
@@ -69,9 +64,9 @@ void DataManager::Sort() {
 	std::string oldData = ToString();
 	auto fileData = Utils::StringToContactData(oldData);
 	std::sort(fileData.begin(), fileData.end(), Utils::CompareByNumberForSort);
-	std::string newData = Utils::ContactDataToString(fileData);
+	data = fileData;
 	Clear();
-	UpdateData(newData);
+	Update();
 }
 
 bool DataManager::IsEmpty() {
@@ -80,4 +75,24 @@ bool DataManager::IsEmpty() {
 	bool empty = (file.tellg() == 0);
 	file.seekg(pos);
 	return empty;
+}
+
+void DataManager::Subscribe(Observer* o) {
+	_observers.push_back(o);
+}
+
+void DataManager::UnSubscribe(Observer* o) {
+	_observers.remove(o);
+}
+
+void DataManager::Notify() const {
+	for (auto o : _observers) {
+		o->Update(data);
+	}
+}
+
+void DataManager::SetData(std::vector<ContactData>& data, bool notify) {
+	this->data = data;
+	if (notify)
+		Notify();
 }

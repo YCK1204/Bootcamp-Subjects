@@ -24,9 +24,6 @@ std::vector<ContactData> ReadControl::ReadHandler(ContactData target, std::vecto
 		for (size_t i = bondaryPos.first; i <= bondaryPos.second; i++)
 			ret.push_back(ContactData(fileData[i]));
 	}
-	else {
-		throw DataNotFoundException();
-	}
 	return ret;
 }
 
@@ -141,10 +138,18 @@ void ReadControl::Handle() {
 			MergeAndTruncate(resultData, data);
 		}
 		if (resultData.size() == 0) {
-			StaticUI::Print(UIType::DATA_NOT_FOUND);
+			throw DataNotFoundException();
 		}
 		else {
-			std::sort(resultData.begin(), resultData.end(), Utils::CompareByNameAndNumberForSort);
+			std::cout << "정렬 기준을 입력하세요, 기본은 이름 기준이며 다른 값 입력시 정렬 기준은 기본으로 설정\n"
+				"[0] : 전화번호, [1] : 주소" << std::endl;
+			std::string order = Utils::Readline("Read > ");
+			if (!order.compare("0"))
+				std::sort(resultData.begin(), resultData.end(), Utils::CompareByNumberForSort);
+			else if (!order.compare("1"))
+				std::sort(resultData.begin(), resultData.end(), Utils::CompareByAddressForSort);
+			else
+				std::sort(resultData.begin(), resultData.end(), Utils::CompareByNameForSort);
 			for (auto data : resultData) {
 				std::cout << data.GetName() + "," + data.GetNumber() + "," + data.GetAddress() << std::endl;
 			}

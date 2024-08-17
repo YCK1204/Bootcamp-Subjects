@@ -19,7 +19,6 @@ public:
 	static bool CompareByNameForSort(const ContactData& a, const ContactData& b);
 	static bool CompareByNumberForSort(const ContactData& a, const ContactData& b);
 	static bool CompareByAddressForSort(const ContactData& a, const ContactData& b);
-	static bool CompareByNameAndNumberForSort(const ContactData& a, const ContactData& b);
 
 	static int CompareByName(const ContactData& a, const ContactData& b);
 	static int CompareByNumber(const ContactData& a, const ContactData& b);

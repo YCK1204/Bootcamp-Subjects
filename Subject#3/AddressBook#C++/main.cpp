@@ -1,9 +1,13 @@
 #include "Manager.hpp"
 #include "StaticUI.hpp"
 #include "Utils.hpp"
+#include "StatisticsUI.hpp"
+#include <algorithm>
+#include <iostream>
 
 int main(void) {
-	Manager::Data.Sort();
+	Manager::Init();
+
 	while (true)
 	{
 		StaticUI::Print(COMMAND);

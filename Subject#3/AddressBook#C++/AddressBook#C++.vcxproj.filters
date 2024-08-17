@@ -45,9 +45,6 @@
     <ClCompile Include="StaticUI.cpp">
       <Filter>소스 파일\UI</Filter>
     </ClCompile>
-    <ClCompile Include="DynamicUI.cpp">
-      <Filter>소스 파일\UI</Filter>
-    </ClCompile>
     <ClCompile Include="ControlManager.cpp">
       <Filter>소스 파일\Managers</Filter>
     </ClCompile>
@@ -75,6 +72,9 @@
     <ClCompile Include="Utils.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="StatisticsUI.cpp">
+      <Filter>소스 파일\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Manager.hpp">
@@ -82,9 +82,6 @@
     </ClInclude>
     <ClInclude Include="DataManager.hpp">
       <Filter>헤더 파일\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="DynamicUI.hpp">
-      <Filter>헤더 파일\UI</Filter>
     </ClInclude>
     <ClInclude Include="StaticUI.hpp">
       <Filter>헤더 파일\UI</Filter>
@@ -113,10 +110,16 @@
     <ClInclude Include="ContactData.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Read.hpp">
+    <ClInclude Include="Utils.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.hpp">
+    <ClInclude Include="Read.hpp">
+      <Filter>헤더 파일\Managers\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="StatisticsUI.hpp">
+      <Filter>헤더 파일\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

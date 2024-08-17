@@ -13,6 +13,7 @@ ControlManager& ControlManager::Instance() {
     if (_instance == nullptr) {
         _instance = new ControlManager();
         _instance->SetState(&NoneControl::Instance());
+        ReadControl::Instance();
     }
     return *_instance;
 }
@@ -44,6 +45,9 @@ void ControlManager::TransitionState(std::string cmd) {
     }
     else if (!cmd.compare("exit")) {
         SetState(&ExitControl::Instance());
+    }
+    else if (!cmd.compare("display")) {
+
     }
     else {
         SetState(&NoneControl::Instance());

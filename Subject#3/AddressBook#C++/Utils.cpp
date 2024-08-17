@@ -68,7 +68,8 @@ std::string Utils::ContactDataToString(std::vector<ContactData>& data) {
 }
 
 std::string Utils::ContactDataToString(ContactData& data) {
-	return data.GetName() + "," + data.GetNumber() + "," + data.GetAddress();
+	std::string ret = data.GetName() + "," + data.GetNumber() + "," + data.GetAddress();
+	return ret;
 }
 
 std::vector<ContactData> Utils::StringToContactData(std::string data) {
@@ -92,12 +93,6 @@ bool Utils::CompareByNumberForSort(const ContactData& a, const ContactData& b) {
 
 bool Utils::CompareByAddressForSort(const ContactData& a, const ContactData& b) {
 	return a.GetAddress() < b.GetAddress();
-}
-
-bool Utils::CompareByNameAndNumberForSort(const ContactData& a, const ContactData& b) {
-	if (a.GetName() == b.GetName())
-		return CompareByNumber(a, b);
-	return CompareByName(a, b);
 }
 
 int Utils::CompareByName(const ContactData& a, const ContactData& b) {

@@ -5,17 +5,24 @@
 #include <string>
 #define FILE_PATH "contacts.csv"
 
-class DataManager
+#include "Observer.hpp"
+
+class DataManager : public Subject
 {
 private:
 	static DataManager* _instance;
+	std::vector<ContactData> data;
 	std::fstream file;
 	DataManager();
 public:
 	static DataManager& Instance();
-	void UpdateData(std::string data);
+	void Update();
 	void Clear();
 	void Sort();
+	void Subscribe(Observer* o) override;
+	void UnSubscribe(Observer* o) override;
+	void Notify() const override;
+	void SetData(std::vector<ContactData>& data, bool notify = true);
 	std::string ToString();
 	bool IsEmpty();
 	~DataManager();

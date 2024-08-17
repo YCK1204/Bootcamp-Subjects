@@ -34,7 +34,9 @@ void CreateControl::Handle() {
 		StaticUI::Print(UIType::OVERLAPPED_DATA);
 		return;
 	}
-	Manager::Data.UpdateData(name + "," + number + "," + addr);
+	fileData.push_back(ContactData(name, number, addr));
+	Manager::Data.SetData(fileData);
+	Manager::Data.Update();
 }
 
 CreateControl::CreateControl() {}

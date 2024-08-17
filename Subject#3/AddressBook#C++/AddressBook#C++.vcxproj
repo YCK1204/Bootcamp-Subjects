@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,7 +136,7 @@
     <ClCompile Include="Exit.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
-    <ClCompile Include="DynamicUI.cpp" />
+    <ClCompile Include="StatisticsUI.cpp" />
     <ClCompile Include="None.cpp" />
     <ClCompile Include="Read.cpp" />
     <ClCompile Include="StaticUI.cpp" />
@@ -150,7 +151,8 @@
     <ClInclude Include="Delete.hpp" />
     <ClInclude Include="Exit.hpp" />
     <ClInclude Include="Manager.hpp" />
-    <ClInclude Include="DynamicUI.hpp" />
+    <ClInclude Include="Observer.hpp" />
+    <ClInclude Include="StatisticsUI.hpp" />
     <ClInclude Include="None.hpp" />
     <ClInclude Include="Read.hpp" />
     <ClInclude Include="State.hpp" />

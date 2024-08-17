@@ -5,6 +5,7 @@
 #include <exception>
 #include <vector>
 #include "Utils.hpp"
+#include "Observer.hpp"
 
 class ReadControl : public State {
 private:

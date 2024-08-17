@@ -45,29 +45,17 @@ void UpdateControl::Handle() {
 		std::string address = Utils::Readline("Update > 주소 : ");
 
 		tmp.SetNumber(number);
-		if (Utils::BinarySearch(fileData, 0, fileData.size() - 1, tmp, Utils::CompareByNumber) >= 0)
+		if (number.compare(data.GetNumber()) && Utils::BinarySearch(fileData, 0, fileData.size() - 1, tmp, Utils::CompareByNumber) >= 0)
 		{
 			StaticUI::Print(UIType::OVERLAPPED_DATA);
 		}
 		else
 		{
-			std::cout <<
-				"[변경 전] 이름 : " + data.GetName() +
-				", 전화번호 : " + data.GetNumber() +
-				", 주소 : " + data.GetAddress()
-				<< std::endl;
-
 			fileData[pos] = ContactData(name, number, address);
 			std::string newData = Utils::ContactDataToString(fileData);
-			Manager::Data.Clear();
-			Manager::Data.UpdateData(newData);
-
-			std::cout <<
-				"[변경 전] 이름 : " + data.GetName() +
-				", 전화번호 : " + data.GetNumber() +
-				", 주소 : " + data.GetAddress()
-				<< std::endl;
-			Manager::Data.Sort();
+			
+			Manager::Data.SetData(fileData);
+			Manager::Data.Update();
 		}
 	}
 }

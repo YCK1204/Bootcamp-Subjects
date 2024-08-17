@@ -12,6 +12,7 @@ private:
 public:
 	static ControlManager& Control;
 	static DataManager& Data;
+	static void Init();
 };
 
 #endif
