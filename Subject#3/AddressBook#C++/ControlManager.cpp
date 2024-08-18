@@ -46,9 +46,6 @@ void ControlManager::TransitionState(std::string cmd) {
     else if (!cmd.compare("exit")) {
         SetState(&ExitControl::Instance());
     }
-    else if (!cmd.compare("display")) {
-
-    }
     else {
         SetState(&NoneControl::Instance());
         StaticUI::Print(UIType::COMMAND_SYNTAX);

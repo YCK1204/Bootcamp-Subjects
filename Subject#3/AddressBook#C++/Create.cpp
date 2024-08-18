@@ -11,7 +11,7 @@ CreateControl& CreateControl::Instance() {
 		_instance = new CreateControl();
 	return *_instance;
 }
-#include <iostream>
+
 void CreateControl::Handle() {
 
 	StaticUI::Print(UIType::CREATE);

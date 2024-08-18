@@ -15,7 +15,6 @@ private:
 	Subject* subject;
 	t_stringCntVector GetNames(std::vector<ContactData> data);
 	t_stringCntVector GetAddresses(std::vector<ContactData> data);
-	void Display(std::vector<ContactData> data);
 public:
 	void Update(std::vector<ContactData> data) override;
 	static StatisticsUI& Instance();

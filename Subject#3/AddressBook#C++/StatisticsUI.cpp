@@ -47,7 +47,13 @@ t_stringCntVector StatisticsUI::GetAddresses(std::vector<ContactData> data) {
 	}
 	return ret;
 }
-void StatisticsUI::Display(std::vector<ContactData> data) {
+
+void StatisticsUI::Update(std::vector<ContactData> data) {
+	std::cout << "통계화면을 보시겠습니까? Yes or No(Y/N)을 입력해주세요" << std::endl;
+	std::string userInput = Utils::Readline("> ");
+	userInput = Utils::ToLower(userInput);
+	if (userInput.compare("yes") && userInput.compare("y"))
+		return;
 	auto namesCnt = GetNames(data);
 	auto addressesCnt = GetAddresses(data);
 	size_t size = data.size();
@@ -57,9 +63,9 @@ void StatisticsUI::Display(std::vector<ContactData> data) {
 	std::cout << "데이터 총 개수 : " << data.size() << std::endl;
 	std::cout
 		<< std::setw(alignSize) << std::setfill(' ') << std::left
-		<< "이름|"
+		<< "이름" << "|"
 		<< std::setw(10) << std::setfill(' ')
-		<< "레코드 수|"
+		<< "레코드 수" << "|"
 		<< std::setw(alignSize) << std::setfill(' ')
 		<< "비율"
 		<< std::endl;
@@ -75,7 +81,14 @@ void StatisticsUI::Display(std::vector<ContactData> data) {
 			<< std::endl;
 	}
 	std::cout << std::endl;
-	std::cout << "주소, 레코드 수, 비율" << std::endl;
+	std::cout
+		<< std::setw(alignSize) << std::setfill(' ') << std::left
+		<< "주소" << "|"
+		<< std::setw(10) << std::setfill(' ')
+		<< "레코드 수" << "|"
+		<< std::setw(alignSize) << std::setfill(' ')
+		<< "비율"
+		<< std::endl;
 	for (auto addressCnt : addressesCnt) {
 		std::cout << std::fixed;
 		std::cout.precision(2);
@@ -88,12 +101,4 @@ void StatisticsUI::Display(std::vector<ContactData> data) {
 			<< std::endl;
 	}
 	std::cout << std::endl;
-}
-
-void StatisticsUI::Update(std::vector<ContactData> data) {
-	std::cout << "통계화면을 보시겠습니까? Yes or No(Y/N)을 입력해주세요" << std::endl;
-	std::string userInput = Utils::Readline("> ");
-	userInput = Utils::ToLower(userInput);
-	if (userInput.compare("yes") && userInput.compare("y"))
-		return;
 }

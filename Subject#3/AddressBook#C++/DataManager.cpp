@@ -48,6 +48,7 @@ void DataManager::Update() {
 	Clear();
 	std::string txt = Utils::ContactDataToString(data);
 	file << txt;
+	file.flush();
 }
 
 void DataManager::Clear() {

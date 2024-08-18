@@ -3,13 +3,12 @@
 
 StaticUI::StaticUI() {}
 
-std::string StaticUI::_command = 
+std::string StaticUI::_command =
 "[EXIT] 프로그램 종료, "
 "[CREATE] 주소록에 데이터 생성, "
 "[READ] 조건에 맞는 데이터 출력, "
 "[UPDATE] 데이터 수정, "
-"[DELETE] 조건에 맞는 데이터 삭제"
-"[DISPLAY] 통계 출력";
+"[DELETE] 조건에 맞는 데이터 삭제";
 
 std::string StaticUI::_commandSyntax = 
 "Error: Command syntax error";
